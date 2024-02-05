@@ -1,0 +1,29 @@
+			     EE 109 - Spring 2023
+			Lab 9 - Hardware Datapath Components
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (1 point) Tammy Trojan feels the gap between the MID brightness using a
+37.5% PWM signal and the BRIGHT level at 100% is too much and wants to add a
+fourth brightness level at 75% called "LIT".  In our circuit where a low signal
+turns the LED on, this means she needs to create a signal that is low 75% of
+the time, or a one 25% of the time. Assuming you had access to additional gates
+to add to the circuit, how could you create this signal?  Write the Boolean
+logic express for LIT in terms of the output signals from the counter.
+
+
+Using a k-map, we could have bits 12-15 as 1s, which would allow us to end up with (QD*QC) as the minimal SOP expression. From there, we could use two NAND gates, one with (QD*QC) as inputs and the other inverter's inputs as the first NAND's output and +5V (which acts as an inverter).
+
+
+
+2. (1 point) We would like to add a feature where if the Select button is
+pressed on the LCD, it turns the LED off completely, and then turns it back on
+when Select is pressed again.  Explain how this could be done without having to
+make any changes to the wiring of the circuit .
+
+
+In the circuit diagram, the only select bits that we care about in 74139 are 00, 01, and 10, since 11 would allow Y3 to pass through, which does nothing. However, if we want the output to turn off R, G, and B, we would have to have Y0, Y1, and Y2 as high outputs, so that current cannot flow through since the opposite end of the LED is a high voltage, and a high voltage on both sides would cause no light to turn on. Therefore, we would need to send 11 from the Q2 and Q3 bits, which are the select bits for 74139
+
+
